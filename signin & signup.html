@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title>SignIn & Sign Up Form Design | CodeLab</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="wrapper">
+    <div class="title">
+      SignIn & Sign Up
+    </div>
+    <div class="tab">
+      <button class="tablinks" onclick="openForm(event, 'SignIn')">Sign In</button>
+      <button class="tablinks" onclick="openForm(event, 'SignUp')">Sign Up</button>
+    </div>
+    <div id="SignIn" class="tabcontent">
+      <form action="#">
+        <div class="field">
+          <input type="text" required>
+          <label>Email Address</label>
+        </div>
+        <div class="field">
+          <input type="password" required>
+          <label>Password</label>
+        </div>
+        <div class="content">
+          <div class="checkbox">
+            <input type="checkbox" id="remember-me">
+            <label for="remember-me">Remember me</label>
+          </div>
+          <div class="pass-link">
+            <a href="#">Forgot password?</a>
+          </div>
+        </div>
+        <div class="field">
+          <input type="submit" value="Sign In">
+        </div>
+        <div class="signup-link">
+          Not a member? <a href="#" onclick="openForm(event, 'SignUp')">Sign up now</a>
+        </div>
+      </form>
+    </div>
+    <div id="SignUp" class="tabcontent" style="display:none;">
+      <form action="#">
+        <div class="field">
+          <input type="text" required>
+          <label>Full Name</label>
+        </div>
+        <div class="field">
+          <input type="text" required>
+          <label>Email Address</label>
+        </div>
+        <div class="field">
+          <input type="password" required>
+          <label>Password</label>
+        </div>
+        <div class="field">
+          <input type="password" required>
+          <label>Confirm Password</label>
+        </div>
+        <div class="field">
+          <input type="submit" value="Sign Up">
+        </div>
+        <div class="signin-link">
+          Already a member? <a href="#" onclick="openForm(event, 'SignIn')">Sign in now</a>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    function openForm(evt, formName) {
+      var i, tabcontent, tablinks;
+      tabcontent = document.getElementsByClassName("tabcontent");
+      for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+      }
+      tablinks = document.getElementsByClassName("tablinks");
+      for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+      }
+      document.getElementById(formName).style.display = "block";
+      evt.currentTarget.className += " active";
+    }
+  </script>
+</body>
+</html>
