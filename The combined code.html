@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title>SignIn & Sign Up Form Design</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: #f2f2f2;
+      font-family: 'Poppins', sans-serif;
+    }
+    .wrapper {
+      background: #fff;
+      max-width: 400px;
+      width: 100%;
+      padding: 25px;
+      border-radius: 8px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    }
+    .title {
+      font-size: 24px;
+      font-weight: 600;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    .field {
+      position: relative;
+      margin-bottom: 20px;
+    }
+    .field input {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-bottom: 2px solid #ccc;
+      font-size: 16px;
+      outline: none;
+      transition: all 0.3s;
+    }
+    .field input:focus {
+      border-bottom: 2px solid #007bff;
+    }
+    .field label {
+      position: absolute;
+      top: 50%;
+      left: 10px;
+      transform: translateY(-50%);
+      color: #999;
+      transition: all 0.3s;
+    }
+    .field input:focus + label,
+    .field input:not(:placeholder-shown) + label {
+      top: -10px;
+      font-size: 12px;
+      color: #007bff;
+    }
+    .field input[type="submit"] {
+      background: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .field input[type="submit"]:hover {
+      background: #0056b3;
+    }
+    .tab {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+    .tab button {
+      background: none;
+      border: none;
+      outline: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+    .tab button.active {
+      color: #007bff;
+      border-bottom: 2px solid #007bff;
+    }
+    .tabcontent {
+      display: none;
+    }
+    .tabcontent.active {
+      display: block;
+    }
+    .checkbox {
+      display: flex;
+      align-items: center;
+    }
+    .checkbox input {
+      margin-right: 10px;
+    }
+    .pass-link,
+    .signup-link,
+    .signin-link {
+      text-align: right;
+      font-size: 14px;
+    }
+    .pass-link a,
+    .signup-link a,
+    .signin-link a {
+      color: #007bff;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    .pass-link a:hover,
+    .signup-link a:hover,
+    .signin-link a:hover {
+      color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="title">
+      SignIn & Sign Up
+    </div>
+    <div class="tab">
+      <button class="tablinks" onclick="openForm(event, 'SignIn')">Sign In</button>
+      <button class="tablinks" onclick="openForm(event, 'SignUp')">Sign Up</button>
+    </div>
+    <div id="SignIn" class="tabcontent">
+      <form action="#">
+        <div class="field">
+          <input type="text" required>
+          <label>Email Address</label>
+        </div>
+        <div class="field">
+          <input type="password" required>
+          <label>Password</label>
+        </div>
+        <div class="content">
+          <div class="checkbox">
+            <input type="checkbox" id="remember-me">
+            <label for="remember-me">Remember me</label>
+          </div>
+          <div class="pass-link">
+            <a href="#">Forgot password?</a>
+          </div>
+        </div>
+        <div class="field">
+          <input type="submit" value="Sign In">
+        </div>
+        <div class="signup-link">
+          Not a member? <a href="#" onclick="openForm(event, 'SignUp')">Sign up now</a>
+        </div>
+      </form>
+    </div>
+    <div id="SignUp" class="tabcontent" style="display:none;">
+      <form action="#">
+        <div class="field">
+          <input type="text" required>
+          <label>Full Name</label>
+        </div>
+        <div class="field">
+          <input type="text" required>
+          <label>Email Address</label>
+        </div>
+        <div class="field">
+          <input type="password" required>
+          <label>Password</label>
+        </div>
+        <div class="field">
+          <input type="password" required>
+          <label>Confirm Password</label>
+        </div>
+        <div class="field">
+          <input type="submit" value="Sign Up">
+        </div>
+        <div class="signin-link">
+          Already a member? <a href="#" onclick="openForm(event, 'SignIn')">Sign in now</a>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    function openForm(evt, formName) {
+      var i, tabcontent, tablinks;
+      tabcontent = document.getElementsByClassName("tabcontent");
+      for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+      }
+      tablinks = document.getElementsByClassName("tablinks");
+      for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+      }
+      document.getElementById(formName).style.display = "block";
+      evt.currentTarget.className += " active";
+    }
+  </script>
+</body>
+</html>
